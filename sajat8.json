@@ -1,0 +1,43 @@
+
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Line chart showing average salaries by experience level and year.",
+    "data": {
+      "url": "https://raw.githubusercontent.com/krisztakiraly01/krisztakiraly01.github.io/main/salaries.csv",
+      "format": {"type": "csv"}
+    },
+    "transform": [
+      {
+        "aggregate": [
+          {
+            "op": "mean",
+            "field": "salary_in_usd",
+            "as": "average_salary"
+          }
+        ],
+        "groupby": ["work_year", "experience_level"]
+      }
+    ],
+    "mark": {
+      "type": "line",
+      "point": {
+        "filled": false,
+        "fill": "white"
+      }
+    },
+    "encoding": {
+      "x": {"field": "work_year", "type": "temporal", "title":null},
+      "y": {"field": "average_salary", "type": "quantitative", "title": "Átlagos fizetés (USD)"},
+      "color": {"field": "experience_level", "type": "nominal", "title": "Tapasztalati szint"},
+      "tooltip": [
+        {"field": "work_year", "type": "temporal", "title": "Év"},
+        {"field": "experience_level", "type": "nominal", "title": "Tapasztalati szint: "},
+        {"field": "average_salary", "type": "quantitative", "title": "Átlagos fizetés (USD): "}
+      ]
+    },
+    "width": 700,
+    "height": 400
+  }
+  
+  
+  

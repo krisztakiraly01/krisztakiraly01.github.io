@@ -1,0 +1,45 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Bar chart comparing the number of employees working remotely by company location.",
+    "data": {
+      "url": "https://raw.githubusercontent.com/krisztakiraly01/krisztakiraly01.github.io/main/salaries.csv",
+      "format": {"type": "csv"}
+    },
+    "transform": [
+      {
+        "aggregate": [
+          {
+            "op": "count",
+            "as": "num_employees"
+          }
+        ],
+        "groupby": ["company_location", "remote_ratio"]
+      }
+    ],
+    "mark": "bar",
+    "encoding": {
+      "x": {
+        "field": "company_location",
+        "type": "nominal",
+        "title": "Company Location"
+      },
+      "y": {
+        "field": "num_employees",
+        "type": "quantitative",
+        "title": "Number of Employees"
+      },
+      "color": {
+        "field": "remote_ratio",
+        "type": "nominal",
+        "title": "Remote Ratio"
+      },
+      "tooltip": [
+        {"field": "company_location", "type": "nominal", "title": "Company Location"},
+        {"field": "remote_ratio", "type": "nominal", "title": "Remote Ratio"},
+        {"field": "num_employees", "type": "quantitative", "title": "Number of Employees"}
+      ]
+    },
+    "width": 700,
+    "height": 400
+  }
+  
