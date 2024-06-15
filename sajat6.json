@@ -1,0 +1,26 @@
+
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+     "url": "https://raw.githubusercontent.com/krisztakiraly01/krisztakiraly01.github.io/main/salaries.csv",
+        "format":{"type":"csv"}
+    },
+    "transform": [
+      {"aggregate": [{"op": "count", "as": "count"}], "groupby": ["job_title"]},
+      {"joinaggregate": [{"op": "sum", "field": "count", "as": "total_count"}]},
+      {"calculate": "datum.count / datum.total_count", "as": "percentage"},
+      {"window": [{"op": "rank", "as": "rank"}], "sort": [{"field": "count", "order": "descending"}]},
+      {"filter": "datum.rank <= 10"},
+    ],
+    "mark": "arc",
+    "encoding": {
+      "theta": {"field": "count", "type": "quantitative", "stack": true},
+      "color": {"field": "job_title", "type": "nominal", "title": "Pozició", "scale": {"range": ["#1f77b4", "#aec7e8", "#ff7f0e", "#ffbb78", "#2ca02c", "#98df8a", "#d62728", "#ff9896", "#9467bd", "#c5b0d5"]}},
+      "tooltip": [
+        {"field": "job_title", "type": "nominal", "title":null},
+        {"field": "percentage", "type": "quantitative", "format": ".1%", "title": "Percentage"}
+      ]
+    },
+    "width":500,
+    "height":400
+  }

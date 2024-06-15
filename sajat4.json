@@ -1,0 +1,21 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Osztott oszlopdiagram vállalatok méretük és átlagfizetésük szerint.",
+  "data": {
+    "url": "https://raw.githubusercontent.com/krisztakiraly01/krisztakiraly01.github.io/main/salaries.csv",
+      "format":{"type":"csv"}
+  },
+  "transform": [
+    {"aggregate": [{"op": "mean", "field": "salary_in_usd", "as": "avg_salary"}], "groupby": ["company_size"]}
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "company_size", "type": "ordinal", "title": "Vállalkozás mérete"},
+    "y": {"field": "avg_salary", "type": "quantitative", "title": "Átlag fizetés"},
+    "color": {"field": "company_size", "type": "nominal", "title": "Vállalkozás mérete", "scale": {"scheme": "blues"}}
+  },
+
+  "width": 700,
+  "height": 300
+}

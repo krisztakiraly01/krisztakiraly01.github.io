@@ -1,0 +1,30 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Dobozdiagram az egyes tapasztalati szintekhez tartozó fizetési eloszlások bemutatására.",
+    "data": {
+      "url": "https://raw.githubusercontent.com/krisztakiraly01/krisztakiraly01.github.io/main/salaries.csv",
+        "format":{"type":"csv"}
+    },
+    "mark": {
+      "type": "boxplot",
+      "extent": "min-max",
+      "outliers": {
+        "size": 100
+      }
+    },
+    "encoding": {
+      "x": {
+        "field": "experience_level",
+        "type": "nominal",
+        "title": "Tapasztalati szint"
+      },
+      "y": {
+        "field": "salary",
+        "type": "quantitative",
+        "title": "Fizetés ($)"
+      }
+    },
+    "width": 700,
+    "height": 300
+  
+  }

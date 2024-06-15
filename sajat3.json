@@ -1,0 +1,25 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Hőtérkép az egyes pozíciók és fizetések közötti összefüggés ábrázolására.",
+    "data": {
+      "url": "https://raw.githubusercontent.com/krisztakiraly01/krisztakiraly01.github.io/main/salaries.csv",
+        "format":{"type":"csv"}
+    },
+    "mark": "bar",
+    "encoding": {
+      "x": {
+        "field": "experience_level",
+        "type": "nominal",
+        "title": "Tapasztalati szint"
+      },
+      "y": {
+        "field": "salary_in_usd",
+        "type": "quantitative",
+        "aggregate": "average",
+        "title": "Fizetés"
+      }
+    },
+  
+    "width": 500,
+    "height": 400
+  }
