@@ -31,7 +31,8 @@
       "color": {
         "field": "remote_ratio",
         "type": "nominal",
-        "title": "Remote Ratio"
+        "title": "Remote Ratio",
+        "scale":{"scheme":"darkblue"}
       },
       "tooltip": [
         {"field": "company_location", "type": "nominal", "title": "Company Location"},

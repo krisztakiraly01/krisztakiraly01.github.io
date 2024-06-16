@@ -1,34 +1,20 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "data": {
-      "url": "https://raw.githubusercontent.com/krisztakiraly01/krisztakiraly01.github.io/main/salaries.csv",
-      "format": {"type": "csv"}
-    },
-    "params": [
-      {
-        "name": "country_selection",
-        "bind": {"input": "select", "options": []}
-      }
-    ],
-    "transform": [
-      {"aggregate": [{"op": "distinct", "field": "company_location", "as": "unique_countries"}]},
-      {
-        "calculate": "datum.unique_countries === 'USA' ? true : false",
-        "as": "country_selected"
-      }
-    ],
-    "mark": "point",
-    "encoding": {
-      "y": {"field": "unique_countries", "type": "nominal", "title": "Unique Countries"},
-      "size": {"value": 100},
-      "color": {
-        "field": "country_selected",
-        "type": "nominal",
-        "scale": {"domain": [true, false], "range": ["#08519c", "#bdbdbd"]},
-        "legend": null
-      }
-    },
-    "width": 400,
-    "height": 300
-  }
-  
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Országok szerinti fizetési szintek "
+  },
+  "description": "A simple bar chart with embedded data.",
+  "data": {
+    "url": "https://raw.githubusercontent.com/krisztakiraly01/krisztakiraly01.github.io/main/salaries.csv",
+    "format":{"type":"csv"}
+  },
+  "mark": "point",
+  "encoding": {
+    "y": {"field": "salary_in_usd", "type": "quantitative"},
+    "x": {"field": "company_location", "type": "nominal"},
+    "color": {"field": "remote_ratio", "scale": {"scheme": "darkblue"}}
+  },
+
+  "width": 700,
+  "height": 300
+}

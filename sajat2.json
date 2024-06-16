@@ -9,7 +9,7 @@
       "type": "boxplot",
       "extent": "min-max",
       "outliers": {
-        "size": 100
+        "size": 70
       }
     },
     "encoding": {
@@ -21,10 +21,10 @@
       "y": {
         "field": "salary",
         "type": "quantitative",
-        "title": "Fizetés ($)"
+        "title": "Fizetések (USD)"
       }
     },
     "width": 700,
-    "height": 300
+    "height": 500
   
   }

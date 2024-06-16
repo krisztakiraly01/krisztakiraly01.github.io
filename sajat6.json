@@ -14,7 +14,7 @@
   "mark": "arc",
   "encoding": {
     "theta": {"field": "count", "type": "quantitative", "stack": true},
-    "color": {"field": "job_title", "type": "nominal", "title": "Pozició", "scale": {"range": ["#1f77b4", "#aec7e8", "#ff7f0e", "#ffbb78", "#2ca02c", "#98df8a", "#d62728", "#ff9896", "#9467bd", "#c5b0d5"]}},
+    "color": {"field": "job_title", "type": "nominal", "title": "Pozició", "scale": {"scheme":"purplebluegreen"}},
     "tooltip": [
       {"field": "job_title", "type": "nominal", "title":null},
       {"field": "percentage", "type": "quantitative", "format": ".1%", "title": "Percentage"}

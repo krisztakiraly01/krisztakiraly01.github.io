@@ -1,8 +1,5 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Országok szerinti fizetési szintek "
-  },
   "description": "A simple bar chart with embedded data.",
   "data": {
     "url": "https://raw.githubusercontent.com/krisztakiraly01/krisztakiraly01.github.io/main/salaries.csv",
@@ -10,11 +7,11 @@
   },
   "mark": "point",
   "encoding": {
-    "y": {"field": "salary_in_usd", "type": "quantitative",  "title":null},
-    "x": {"field": "company_location", "type": "nominal"},
-    "color": {"field": "remote_ratio", "scale": {"scheme": "blues"}}
+    "y": {"field": "salary_in_usd", "type": "quantitative",  "title":"Fizetések (USD)"},
+    "x": {"field": "company_location", "type": "nominal", "title":"Ország"},
+    "color": {"field": "remote_ratio", "scale": {"scheme": "darkblue"}, "title":"Távmunkaráta"}
   },
 
   "width": 700,
-  "height": 300
+  "height": 500
 }

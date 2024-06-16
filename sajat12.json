@@ -1,0 +1,54 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 700,
+    "height": 500,
+    "params": [
+      {
+        "name": "projection",
+        "value": "equalEarth",
+        "bind": {
+          "input": "select",
+          "options": [
+            "albers",
+            "equalEarth",
+            "equirectangular",
+            "gnomonic",
+            "naturalEarth1",
+            "orthographic",
+            "stereographic",
+            "transverseMercator"
+          ]
+        }
+      }
+    ],
+    "layer": [
+      {
+        "data": {
+          "url": "https://vega.github.io/vega-lite/data/world-110m.json",
+          "format": {"type": "topojson", "feature": "countries"}
+        },
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "gray"}
+      },
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/krisztakiraly01/krisztakiraly01.github.io/main/latlong.csv",
+          "format": {"type": "csv"}
+        },
+        "mark": "point",
+        "encoding": {
+          "longitude": {"field": "long", "type": "quantitative"},
+          "latitude": {"field": "lat", "type": "quantitative"},
+          "size": {"field": "salary_in_usd", "legend":null},
+          "color": {"field": "job_title", "legend":null, "scale":{"scheme": "darkblue"}},
+          "tooltip": [
+            {"field": "job_title", "type": "nominal", "title": "Pozició"},
+            {"field": "salary_in_usd", "type": "quantitative", "title": "Fizetés (USD)"},
+            {"field": "company_location", "type": "nominal", "title": "Ország"}
+          ]
+        }
+      }
+    ],
+    "projection": {"type": {"expr": "projection"}}
+  }
+  
+  
