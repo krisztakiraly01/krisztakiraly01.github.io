@@ -4,13 +4,15 @@
 <head>    
     <!-- The head tag links to resources our page needs and defines information about it. Tags in the <head> aren't displayed on the page. -->
  
-    <link rel="stylesheet" type="text/css" href="s2_example3.css">
+    <link rel="stylesheet" type="text/css" href="s2_example1.css">
     <title> Kriszta's Portfolio </title> 
 
     <!-- This is a link to the vega-lite which we're using to make graphs -->
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    
+
 </head>
 
 <body> 
@@ -21,24 +23,109 @@
         <!-- we're setting the margin to 0px so the header and authour name are close together -->
         Kiraly Kriszta-Orsolya | <a href="https://github.com/krisztakiraly01">GitHub</a>
     </p>
+
+    <hr><br>
     <h3 class="small"> 
         Az adatvezérelt világunkban a data science terület egyre nagyobb jelentőséggel bír, és ennek megfelelően az adatkutató szakemberek iránti kereslet is folyamatosan növekszik. Ez a portfólió a data science területén dolgozók fizetéseivel foglalkozik, és célja, hogy átfogó képet nyújtson az iparág jelenlegi állapotáról és a különböző tényezők hatásairól.
     </h3>
+<br>
+    <h3 class="small"> 
+        Az adatok bemutatása
+    </h3>
+ 
+    <table>
+        <thead>
+            <tr>
+                <th>Oszlop</th>
+                <th>Leírás</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>work_year</td>
+                <td>Az év, amikor a fizetés kifizetésre került.</td>
+            </tr>
+            <tr>
+                <td>experience_level</td>
+                <td>A tapasztalati szint a munkakörben az adott év során, lehetséges értékekkel: EN (Entry-level / Junior - kezdő / junior), MI (Mid-level / Intermediate - közép-/középszintű), SE (Senior-level / Expert - senior/szakértő), EX (Executive-level / Director - vezetői/szintű).</td>
+            </tr>
+            <tr>
+                <td>employment_type</td>
+                <td>A munkakör foglalkoztatási típusa: PT (Part-time - részmunkaidős), FT (Full-time - teljes munkaidős), CT (Contract - szerződéses), FL (Freelance - szabadúszó).</td>
+            </tr>
+            <tr>
+                <td>job_title</td>
+                <td>A munkakör, amelyet az adott év során betöltöttek.</td>
+            </tr>
+            <tr>
+                <td>salary</td>
+                <td>A teljes bruttó fizetés összege.</td>
+            </tr>
+            <tr>
+                <td>salary_currency</td>
+                <td>A fizetés valutája ISO 4217 szerinti valutakód.</td>
+            </tr>
+            <tr>
+                <td>salary_in_usd</td>
+                <td>A fizetés USD-ben (a pénzügyi árfolyamok és az adott év átlagos USD árfolyama alapján átszámítva).</td>
+            </tr>
+            <tr>
+                <td>employee_residence</td>
+                <td>A munkavállaló állandó lakhelye az adott év során, ISO 3166 szerinti országkód.</td>
+            </tr>
+            <tr>
+                <td>remote_ratio</td>
+                <td>A távmunka aránya, lehetséges értékek: 0 (nincs távmunka, kevesebb mint 20%), 50 (részben távmunka), 100 (teljesen távmunka, több mint 80%).</td>
+            </tr>
+            <tr>
+                <td>company_location</td>
+                <td>A munkáltató fő irodájának vagy szerződéses fióktelepének országa ISO 3166 szerinti országkód.</td>
+            </tr>
+            <tr>
+                <td>company_size</td>
+                <td>A vállalatnál az adott év során dolgozó emberek átlagos száma: S (kevesebb mint 50 alkalmazott), M (50-250 alkalmazott), L (több mint 250 alkalmazott).</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>Forrás: <a href="https://www.kaggle.com/datasets/ruchi798/data-science-job-salaries">kaggle</a></p>
+    <br><br>
 
-    <!-- <section>
-        <div class="chart-description">
-            <h2>Célkitűzés</h2>
+
+    <section>
+        <div class="chart-description"> 
+            <h2>Data Science Fizetések és Pozíciók Elhelyezkedése</h2>
             <p> 
-                A portfólió célja, hogy bemutassa a data science szakemberek fizetéseit befolyásoló különböző tényezőket, mint például a földrajzi elhelyezkedés, iparágak, tapasztalati szint, végzettség és készségek. A bemutatott vizualizációk segítségével átláthatóvá válnak a fizetési trendek és különbségek, ezáltal segítve a szakmabelieket és a karrierjük iránt érdeklődőket a tájékozódásban és a döntéshozatalban.
+                Ez a vizualizáció a világ különböző pontjain dolgozó Data Science szakemberek fizetéseit és munkaköreit mutatja be. 
+                A térkép alapja egy világ térkép, amelyen az országok határai láthatók, szürke kitöltéssel és kontúrral. 
+                Az egyes országok helyén pontok jelzik az adatokat.
+                A pontok mérete a fizetések nagyságát (USD-ben) mutatja, míg a színük a különböző munkaköröket reprezentálja.
             </p>
         </div>
-    </section> -->
+        <figure id="Location12"></figure> 
+    </section>
+
+    <section>
+        <div class="chart-description"> 
+            <h2> Alkalmazottak Távmunkavégzési Aránya Országonként </h2>
+            <p> 
+                Ez a vizualizáció egy oszlopdiagram, amely összehasonlítja a távoli munkavégzés arányát és a cégek helyszíne szerinti alkalmazottak számát.
+                Az oszlopdiagram különböző oszlopokkal ábrázolja a vállalatok helyszínét (oroszág) az x tengelyen, és az alkalmazottak számát a y tengelyen.
+                A távoli munkavégzés aránya (remote_ratio) szerinti színek különböztetik meg az oszlopokat. Például a sötétkék szín egy adott távoli munkavégzési arányt jelöl.
+            </p>
+        </div>
+        <figure id="Location9"></figure> 
+    </section>
+
     
     <section>
         <div class="chart-description">
-            <h2> Átlagfizetések földrajzi régiók és távmunkaráta szerint </h2>
+            <h2> Fizetések és Távmunka Aránya Országonként </h2>
             <p> 
-               A következő diagram a salary_in_usd, remote_ratio, és company_location adatok vizualizációját foglalja össze. Az adatvizualizáció célja, hogy bemutassa a távmunkaráta (remote ratio) és a vállalatok földrajzi elhelyezkedése (company location) közötti összefüggéseket, valamint az alkalmazottak fizetéseit (salary_in_usd). 
+                Ez a vizualizáció egy pontdiagramot használ, hogy megjelenítse a Data Science területén dolgozók fizetéseit az országonkénti eloszlásuk és a távmunka arányuk szerint.
+                A diagram pontokat használ az adatok megjelenítésére, ahol minden pont egy adott országot és annak társított fizetéseket ábrázolja.
+                X tengely: Az országokat (company_location) ábrázolja, nominális skálán.
+                Y tengely: Az USD-ben kifejezett fizetéseket mutatja, kvantitatív skálán.
+                Színkódolás: A pontok színe a távmunka arányát (remote_ratio) jelzi, ahol a sötétebb színek magasabb távmunka arányt jelentenek.
             </p>
         </div>
         <figure id="Location1"></figure> <!-- we give it an id so we can put a vega-lite graph here with VegaEmbed -->
@@ -46,9 +133,12 @@
 
     <section>
         <div class="chart-description"> 
-            <h2>Egyes tapasztalati szintekhez tartozó fizetési eloszlások</h2>
+            <h2>Tapasztalati Szintekhez Tartozó Fizetési Eloszlások</h2>
             <p> 
-                A fizetések és tapasztalati szintek közötti összefüggést ábrázolja a diagram. Segít megérteni, hogyan alakulnak az állásokhoz kapcsolódó jövedelmek a szakmai tapasztalat növekedésével. A diagram vízszintes tengelyén a tapasztalati szint áll, míg a függőleges tengelyén a jövedelem vagy fizetés van ábrázolva.
+                Ez a vizualizáció egy dobódiagramot (boxplotot) használ, hogy bemutassa a különböző tapasztalati szintekhez tartozó fizetések eloszlását USD-ben.
+                A diagram minden egyes kategóriájához (tapasztalati szint) egy dobozt jelenít meg, amely ábrázolja az adatok középső 50%-át (azaz a mediant), valamint a szélső értékeket (minimum és maximum). Az esetleges szélsőséges értékeket (outliers) is jelzi.
+                X tengely: A tapasztalati szinteket (Entry-level / Junior, Mid-level / Intermediate, Senior-level / Expert, stb.) ábrázolja.
+                Y tengely: Az USD-ben kifejezett fizetéseket mutatja.
             </p>
         </div>
         <figure id="Location2"></figure> <!-- we give it an id so we can put a vega-lite graph here with VegaEmbed -->
@@ -56,10 +146,13 @@
 
     <section>
         <div class="chart-description"> 
-            <h2>Section 4: 4 </h2>
+            <h2>Átlagos Fizetések összehasonlítása Vállalatok Méretük Szerint</h2>
             <p> 
-                This is a more advanced chart. We'll cover charts like this in more detail later today. Don't worry if you don't understand it yet.
-                Feel free to replace both charts with your own examples.
+                Ez a vizualizáció egy osztott oszlopdiagramot használ, hogy összehasonlítsa a vállalatok méretét és az átlagos fizetéseket USD-ben.
+                Az oszlopok a vállalatok méretét (kis, közepes, nagy) ábrázolják az x tengelyen.
+                Az oszlopok magassága az adott kategóriába tartozó vállalatok átlagos fizetését mutatja USD-ben, a y tengelyen.
+                A színek a vállalatok méretét jelölik, így könnyen megkülönböztethetők a különböző méretű vállalatok.
+                Megfigyelhető, hogy általában nagyobb vállalatoknál magasabbak az átlagos fizetések.
             </p>
         </div>
         <figure id="Location4"></figure> 
@@ -67,10 +160,11 @@
 
     <section>
         <div class="chart-description"> 
-            <h2>Section 6: 6 </h2>
+            <h2>Data Science Munkakörök Előfordulása és Arányai</h2>
             <p> 
-                This is a more advanced chart. We'll cover charts like this in more detail later today. Don't worry if you don't understand it yet.
-                Feel free to replace both charts with your own examples.
+                Ez a vizualizáció egy körcsúszda diagramot használ, hogy szemléltessen a Data Science területén népszerű munkaköröket azok elterjedésével és arányával kapcsolatban.
+                A szegmensek méretei arányosak a munkakörök gyakoriságával a datasetben.
+                A színek a munkaköröket különböztetik meg, így könnyen megállapítható, hogy mely munkakörök dominálnak.
             </p>
         </div>
         <figure id="Location6"></figure> 
@@ -78,35 +172,29 @@
 
     <section>
         <div class="chart-description"> 
-            <h2>Section 7: 7 </h2>
+            <h2>Átlagfizetések összehasonlítása Pozíció típusok szerint</h2>
             <p> 
-                This is a more advanced chart. We'll cover charts like this in more detail later today. Don't worry if you don't understand it yet.
-                Feel free to replace both charts with your own examples.
+                Ez a diagram egy dobozdiagramot (boxplotot) használ, hogy megmutassa a különböző pozíció típusokhoz tartozó átlagos fizetéseket a Data Science területén.
+                A diagram minden egyes kategóriájához (pozíció típus) egy dobozt jelenít meg, amely ábrázolja az adatok középső 50%-át (azaz a mediant), valamint a szélső értékeket (minimum és maximum). Az esetleges szélsőséges értékeket (outliers) is jelzi.
+                X tengely: A pozíció típusokat (employment_type) ábrázolja, ordinális skálán.
+                Y tengely: Az USD-ben kifejezett átlagos fizetéseket mutatja, kvantitatív skálán.
             </p>
         </div>
-        <figure id="Location7"></figure> 
-    </section>
-   
-    <section>
-        <div class="chart-description"> 
-            <h2>Section9 </h2>
-            <p> 
-                This is a more advanced chart. We'll cover charts like this in more detail later today. Don't worry if you don't understand it yet.
-                Feel free to replace both charts with your own examples.
-            </p>
-        </div>
-        <figure id="Location9"></figure> 
+        <figure id="Location13"></figure> 
     </section>
 
     <section>
         <div class="chart-description"> 
-            <h2>Section12</h2>
+            <h2>Data Science Fizetések és Pozíciók Elhelyezkedése</h2>
             <p> 
-                This is a more advanced chart. We'll cover charts like this in more detail later today. Don't worry if you don't understand it yet.
-                Feel free to replace both charts with your own examples.
+                Ez a diagram egy oszlopdiagramot (bar chart) mutat be, amely az átlagos fizetéseket ábrázolja különböző munkakörök szerint a Data Science területén.
+                A diagram oszlopokat használ, ahol minden oszlop egy adott munkakört reprezentál, és annak magassága az átlagos fizetést mutatja.
+                X tengely: A munkaköröket (job_title) ábrázolja, nominális skálán. A munkakörök alapértelmezett módon csökkenő sorrendben vannak rendezve az átlagos fizetés szerint.
+                Y tengely: Az USD-ben kifejezett átlagos fizetéseket mutatja, kvantitatív skálán.
+                Színkódolás: A munkaköröket különböző színekkel különbözteti meg
             </p>
         </div>
-        <figure id="Location12"></figure> 
+        <figure id="Location14"></figure> 
     </section>
 
     <!-- This is a script, it's a way to run JavaScript code on the page -->
@@ -117,10 +205,10 @@
         var figure_2_spec = "sajat2.json";
         var figure_4_spec = "sajat4.json";
         var figure_6_spec = "sajat6.json";
-        var figure_7_spec = "sajat7.json";
-        var figure_8_spec = "sajat8.json";
         var figure_9_spec = "sajat9.json";
         var figure_12_spec = "sajat12.json";
+        var figure_13_spec = "sajat13.json";
+        var figure_14_spec = "sajat14.json";
 
 
 
@@ -128,10 +216,10 @@
         vegaEmbed('#Location2', figure_2_spec)
         vegaEmbed('#Location4', figure_4_spec)
         vegaEmbed('#Location6', figure_6_spec)
-        vegaEmbed('#Location7', figure_7_spec)
-        vegaEmbed('#Location8', figure_8_spec)
         vegaEmbed('#Location9', figure_9_spec)
         vegaEmbed('#Location12', figure_12_spec)
+        vegaEmbed('#Location13', figure_13_spec)
+        vegaEmbed('#Location14', figure_14_spec)
     
 
     </script>

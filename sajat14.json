@@ -1,0 +1,16 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {"url": "https://raw.githubusercontent.com/krisztakiraly01/krisztakiraly01.github.io/main/latlong.csv"},
+    "mark": "bar",
+    "encoding": {
+      "x": {"field": "job_title", "type": "nominal", "title": "Munkakör", "sort": "-y"},
+      "y": {"aggregate": "mean", "field": "salary_in_usd", "type": "quantitative", "title": "Átlagfizetés (USD)"},
+      "color": {"field": "job_title", "type": "nominal", "legend": null, "scale":{"scheme":"darkblue"}},
+      "tooltip": [
+      {"field": "job_title", "type": "nominal", "title": "Munkakör"},
+      {"field": "salary_in_usd", "type": "quantitative", "title": "Átlagfizetés (USD)"}
+    ]
+    },
+    "width": 700,
+    "height": 500
+  }

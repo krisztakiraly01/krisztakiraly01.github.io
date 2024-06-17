@@ -41,7 +41,7 @@
           "size": {"field": "salary_in_usd", "legend":null},
           "color": {"field": "job_title", "legend":null, "scale":{"scheme": "darkblue"}},
           "tooltip": [
-            {"field": "job_title", "type": "nominal", "title": "Pozició"},
+            {"field": "job_title", "type": "nominal", "title": "Munkakör"},
             {"field": "salary_in_usd", "type": "quantitative", "title": "Fizetés (USD)"},
             {"field": "company_location", "type": "nominal", "title": "Ország"}
           ]

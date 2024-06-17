@@ -1,0 +1,16 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {"url": "https://raw.githubusercontent.com/krisztakiraly01/krisztakiraly01.github.io/main/latlong.csv"},
+    "mark":{"type": "boxplot", "extent": "min-max", "outliers": {"size": 70}},
+    "encoding": {
+      "x": {"field": "employment_type", "type": "ordinal", "title": "Pozició típusa"},
+      "y": {"aggregate": "mean", "field": "salary_in_usd", "type": "quantitative", "title": "Átlagfizetés (USD)"},
+      "color": {"field": "employment_type", "type": "nominal", "legend": null, "scale": {"scheme": "darkblue"}},
+      "tooltip": [
+      {"field": "employment_type", "type": "ordinal", "title": "Pozició típusa"},
+      {"field": "salary_in_usd", "type": "quantitative", "title": "Átlagfizetés (USD)"}
+    ]
+    },
+    "width": 700,
+    "height": 500
+  }
